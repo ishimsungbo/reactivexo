@@ -32,7 +32,7 @@ public class HomeController {
     Mono<Rendering> home() { // <1>
         return Mono.just(Rendering.view("home.html") // <2>
                 .modelAttribute("items", //
-                        this.itemRepository.findAll()) // <3>
+                        this.itemRepository.findAll().doOnNext(System.out::println)) // <3>
                 .modelAttribute("cart", //
                         this.cartRepository.findById("My Cart") // <4>
                                 .defaultIfEmpty(new Cart("My Cart")))
@@ -58,7 +58,7 @@ public class HomeController {
      */
 
     // tag::3[]
-    /*
+    /**
     @PostMapping("/add/{id}") // <1>
     Mono<String> addToCart(@PathVariable String id) { // <2>
         return this.cartRepository.findById("My Cart") //
@@ -85,11 +85,25 @@ public class HomeController {
     */
 
     //위의 소스를 서비스로 옮기면 간결해진다.
+    /**
     @PostMapping("/add/{id}") // <1>
     Mono<String> addToCart(@PathVariable String id){
         return this.cartService.addToCart("My Cart", id)
                 .thenReturn("redirect:/");
     }
+    */
     // end::3[]
+
+    @PostMapping
+    Mono<String> createItem(@ModelAttribute Item newItem) {
+        return this.itemRepository.save(newItem) //
+                .thenReturn("redirect:/");
+    }
+
+    @DeleteMapping("/delete/{id}")
+    Mono<String> deleteItem(@PathVariable String id) {
+        return this.itemRepository.deleteById(id) //
+                .thenReturn("redirect:/");
+    }
 
 }
