@@ -13,10 +13,15 @@ public class CartItem {
         this.item = item;
         this.quantity = 1;
     }
+
     // end::code[]
 
     public void increment() {
         this.quantity++;
+    }
+
+    public void decrement() {
+        this.quantity--;
     }
 
     public Item getItem() {
