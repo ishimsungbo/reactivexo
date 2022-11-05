@@ -2,19 +2,34 @@ package com.spr.reactivexo;
 
 import org.springframework.data.annotation.Id;
 
+import java.util.Objects;
+
 //판매 상품 데이터
 public class Item {
 
     private @Id String id;
     private String name;
+    private String description;
     private double price;
+    // end::code[]
 
-    public Item() {
+    private Item() {
     }
 
-    public Item(String name, double price) {
+    Item(String name, double price) {
         this.name = name;
         this.price = price;
+    }
+
+    Item(String name, String description, double price) {
+        this.name = name;
+        this.description = description;
+        this.price = price;
+    }
+
+    Item(String id, String name, String description, double price) {
+        this(name, description, price);
+        this.id = id;
     }
 
     public String getId() {
@@ -33,6 +48,14 @@ public class Item {
         this.name = name;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     public double getPrice() {
         return price;
     }
@@ -42,11 +65,33 @@ public class Item {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Item item = (Item) o;
+        return Double.compare(item.price, price) == 0 &&
+                Objects.equals(id, item.id) &&
+                Objects.equals(name, item.name) &&
+                Objects.equals(description, item.description);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, description, price);
+    }
+
+    @Override
     public String toString() {
         return "Item{" +
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
                 ", price=" + price +
                 '}';
     }
+
 }
