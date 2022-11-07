@@ -1,4 +1,4 @@
-package com.spr.reactivexo.rxjava;
+package com.spr.reactivexo.rxjava.ch02;
 
 import io.reactivex.rxjava3.core.Observable;
 import io.reactivex.rxjava3.functions.Function;
