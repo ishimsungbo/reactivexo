@@ -1,5 +1,6 @@
 package com.spr.reactivexo.rxjava.ch01;
 
+import io.reactivex.rxjava3.processors.ReplayProcessor;
 import io.reactivex.rxjava3.subjects.ReplaySubject;
 
 public class ReplaySubject_ex {
@@ -13,6 +14,10 @@ public class ReplaySubject_ex {
      ==> 예제를 보면 두번째 구독자가 구독을 하게 되면 발행되었던 지난 데이터 모두를 받게 된다.
      */
     public static void main(String[] args) {
+        /*
+        System.out.println("==============================================");
+        System.out.println("*** 리액티브 예제");
+        System.out.println("==============================================");
         ReplaySubject<String> subject = ReplaySubject.create();
         subject.subscribe(data -> System.out.println(("Subscriber 1# => "+ data)));
 
@@ -24,11 +29,32 @@ public class ReplaySubject_ex {
         }
 
         subject.subscribe(data -> System.out.println(("Subscriber 2# => "+ data)));
-        /**
-         * 만약 value 가 엄청난 용량의 데이터라면? 문제임...
-         */
+
+         // 만약 value 가 엄청난 용량의 데이터라면? 문제임...
+
         subject.onNext("D " + value+1);
         subject.onComplete();
+        */
+
+        System.out.println("==============================================");
+        System.out.println("*** 스프링 웹플러스 예제");
+        System.out.println("==============================================");
+
+        ReplayProcessor<String> re = ReplayProcessor.create();
+        re.subscribe(data -> System.out.println("Spring ReplayProcessor 1# : " + data));
+        int infDataInt = 0;
+
+        for(int i=0 ; i < 10 ; i++){
+            infDataInt++;
+            re.onNext("D " + infDataInt);
+        }
+
+        re.onNext("Spring WebFlux Data " + infDataInt);
+
+        re.subscribe(data -> System.out.println("Spring ReplayProcessor 2# : " + data));
+
+        re.onNext("D " + infDataInt+1);
+        re.onComplete();
 
     }
 }
