@@ -26,7 +26,7 @@ public class CommonUtils {
     }
 
     public static void exampleComplete() {
-        System.out.println("-----------------------");
+        System.out.println("exampleComplete -----------------------");
     }
 
     public static void sleep(int millis) {
