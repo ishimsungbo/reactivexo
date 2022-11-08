@@ -3,8 +3,6 @@ package com.spr.reactivexo.rxjava.ch01;
 import com.spr.reactivexo.rxjava.CommonUtils;
 import io.reactivex.rxjava3.core.Observable;
 import io.reactivex.rxjava3.observables.ConnectableObservable;
-import org.springframework.data.mongodb.core.aggregation.ArrayOperators;
-import sun.nio.cs.ext.IBM037;
 
 import java.util.concurrent.TimeUnit;
 
