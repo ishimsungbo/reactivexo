@@ -3,7 +3,6 @@ package com.spr.reactivexo.rxjava.ch05;
 import com.spr.reactivexo.rxjava.CommonUtils;
 import com.spr.reactivexo.rxjava.Log;
 import io.reactivex.rxjava3.core.Observable;
-import io.reactivex.rxjava3.core.Scheduler;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 
 public class NewThreadSchedulerExample {
