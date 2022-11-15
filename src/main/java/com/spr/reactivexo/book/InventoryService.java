@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.spr.reactivexo;
+package com.spr.reactivexo.book;
 
 import java.util.stream.Collectors;
 

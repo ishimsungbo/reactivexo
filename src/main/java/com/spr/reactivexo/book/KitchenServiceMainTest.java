@@ -1,14 +1,7 @@
-package com.spr.reactivexo;
+package com.spr.reactivexo.book;
 
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
-
-import java.time.Duration;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Random;
 
 @Slf4j
 public class KitchenServiceMainTest {

@@ -1,4 +1,4 @@
-package com.spr.reactivexo;
+package com.spr.reactivexo.book;
 
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;

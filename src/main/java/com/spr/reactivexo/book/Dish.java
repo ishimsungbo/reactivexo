@@ -1,4 +1,4 @@
-package com.spr.reactivexo;
+package com.spr.reactivexo.book;
 
 public class Dish {
 
