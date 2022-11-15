@@ -27,6 +27,7 @@ public class HomeController {
 
 
     // tag::2[]
+    /**
     @GetMapping
     Mono<Rendering> home() { // <1>
         return Mono.just(Rendering.view("home.html") // <2>
@@ -38,7 +39,7 @@ public class HomeController {
                 .build());
     }
     // end::2[]
-
+**/
     /**
      * 화면에서 Add to Cart 버튼클릭 시
      * 1.@PostMapping add/{id}로 들어오는 POST 요청을 이 메소드에 매핑해준다.
